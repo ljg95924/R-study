@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520338608900.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E67CA6F2",
+    "lastKnownWriteTime" : 1520343725,
+    "last_content_update" : 1520343725986,
+    "path" : "~/GitHub/R-study/DataProcessing.R",
+    "project_path" : "DataProcessing.R",
+    "properties" : {
+        "cursorPosition" : "84,0",
+        "scrollLine" : "54",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
