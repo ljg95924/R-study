@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520312932930.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "715C549C",
+    "lastKnownWriteTime" : 1520338523,
+    "last_content_update" : 1520338523326,
+    "path" : "~/GitHub/R-study/DataAnalysisBasic.R",
+    "project_path" : "DataAnalysisBasic.R",
+    "properties" : {
+        "cursorPosition" : "47,25",
+        "scrollLine" : "35",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
