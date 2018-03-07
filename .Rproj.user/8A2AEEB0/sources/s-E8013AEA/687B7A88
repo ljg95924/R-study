@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520420675843.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3801073503",
+    "id" : "687B7A88",
+    "lastKnownWriteTime" : 1520429745,
+    "last_content_update" : 1520429745157,
+    "path" : "~/GitHub/R-study/DataRefinement.R",
+    "project_path" : "DataRefinement.R",
+    "properties" : {
+        "cursorPosition" : "22,0",
+        "scrollLine" : "1",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
