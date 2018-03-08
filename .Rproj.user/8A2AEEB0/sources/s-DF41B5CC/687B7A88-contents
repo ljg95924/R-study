@@ -8,7 +8,7 @@ is.na(df) #TRUE = 결측치, FALSE=결측치X
 table(is.na(df))
 table(is.na(df$sex))
 table(is.na(df$score))
-
+library(ggplot2)
 library(dplyr)
 df%>%filter(is.na(score)) # score가 NA인 데이터만 출력
 df%>%filter(!is.na(score))# NA를 제외한 데이터만 출력 
@@ -63,4 +63,15 @@ mpg[c(29,43,129,203),'cty']<-c(3,4,39,42) #cty에 이상치 할당
 #Q1. drv에 이상치가 있는지 확인하세요. 이상치를 결측 처리한 후 이상치가 사라졌는지 확인하세요. 결측처리 할때는 %in% 기호를 활용하세요.
 table(mpg$drv)
 table(mpg$cty)
-mpg$drv<-ifelse(mpg$)
+mpg$drv<-ifelse(mpg$drv=='K',NA,mpg$drv)
+mpg$cty<-ifelse(mpg$cty%in%c(3,4,39,42),NA,mpg$cty)
+#Q2. 상자 그림의 통계치를 이용해 정상 범위를 벗어난 값을 결측 처리한 후 다시 상자 그림을 만들어 이상치가 사라졌는지 확인하세요.
+boxplot(mpg$cty)
+boxplot(mpg$cty)$stats
+mpg$cty<-ifelse(mpg$cty<9 | mpg$cty>26,NA,mpg$cty)
+boxplot(mpg$cty)
+#Q3. 이상치를 제외한 다음 drv별로 cty평균이 어떻게 다른지 알아보세요.
+mpg%>%
+  filter(!is.na(drv)&!is.na(cty))%>%
+  group_by(drv)%>%
+  summarise(avg_cty=mean(cty))
