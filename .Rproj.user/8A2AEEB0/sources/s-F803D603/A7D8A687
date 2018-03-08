@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520481652623.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "107933562",
+    "id" : "A7D8A687",
+    "lastKnownWriteTime" : 1520522017,
+    "last_content_update" : 1520522017963,
+    "path" : "~/GitHub/R-study/GraphMake.R",
+    "project_path" : "GraphMake.R",
+    "properties" : {
+        "cursorPosition" : "42,0",
+        "scrollLine" : "11",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
