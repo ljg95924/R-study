@@ -40,3 +40,21 @@ mp<-mpg%>%
 ggplot(data=mp,aes(x=reorder(manufacturer,-avg_cty),y=avg_cty))+geom_col()
 #Q2. 자동차 중에서 어떤 class가 가장 많은지 알아보려고 합니다. 자동차 종류별 빈도를 표현한 막대 그래프를 만들어 보세요.
 ggplot(data=mpg,aes(x=class))+geom_bar()
+
+#선그래프-시간에따라 달라지는 데이터 표현하기
+
+#geom_line() 시계열 그래프
+ggplot(data=economics,aes(x=date,y=unemploy))+geom_line()
+#Q1. psavert(개인 저축률)가 시간에 따라 어떻게 변해왔는지 알아보려합니다. 시간에따른 개인 저축률의 변화를 나타낸 시계열 그래프를 만들어 보세요.
+ggplot(data=economics,aes(x=date,y=psavert))+geom_line()
+
+#상자그림- 집단 간 분포 차이 표현하기
+
+#geom_boxplot() 상자 그림
+ggplot(data=mpg,aes(x=drv,y=hwy))+geom_boxplot()
+
+#Q1. class가 'compact','subcompact','suv'인 자동차의 cty가 어떻게 다른지 비교해 보려고 합니다. 세 차종의 cty를 나타낸 상자 그림을 만들어 보세요.
+mp<-mpg%>%
+  filter(class %in% c('compact','subcompact','suv'))
+ggplot(data=mp,aes(x=class,y=cty))+geom_boxplot()
+         
