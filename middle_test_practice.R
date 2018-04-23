@@ -257,7 +257,7 @@ x<-seq(0,2*pi,0.1)
 y<-sin(x)
 plot(x,y,cex=.5,col='red')
 lines(x,y)
-
+rep(1,10)
 plot(cars)
 lines(lowess(cars))
 plot(cars,xlim=c(0,25))
@@ -276,7 +276,11 @@ legend('topright',legend=c('Sepal','petal'),
 boxplot(iris$Sepal.Width)
 boxstats<-boxplot(iris$Sepal.Width)
 boxstats
-
+?sample
+library(sampling)
+?strata
+?mosaicplot
+?boxplot
 sv<-subset(iris,Species=='setosa' | Species=='versicolor')
 str(sv)
 head(sv)
@@ -288,7 +292,8 @@ hist(iris$Sepal.Width)
 hist(iris$Sepal.Width,freq=F)
 x<-hist(iris$Sepal.Width,freq = F)
 x
-
+?with
+?legend
 plot(density(iris$Sepal.Width))
 hist(iris$Sepal.Width,freq=F)
 lines(density(iris$Sepal.Width))
@@ -522,6 +527,8 @@ temp<-(c(1,2,NA,4))
 temp[!is.na(temp)]
 
 iris_copy<-iris  
+
+
 for(i in 1:length(iris_copy$Sepal.Length)){
   if(iris_copy$Sepal.Length[i]>5)
     iris_copy$size[i]<-'greater than 5'
@@ -561,4 +568,102 @@ sapply(barley,function(x)length(unique(x)))
 tapply(iris$Petal.Length, iris$Species, mean)
 
 plot(iris$Petal.Length,iris$Petal.Width)
-plot(iris$Petal.Length,iris$Petal.Width)
+plot(iris$Petal.Length,iris$Petal.Width,pch=21,bg=c('red','green','blue')[unclass(iris$Species)])
+barplot(tapply(iris$Petal.Length,iris$Species,mean))
+?barplot
+
+library(MASS)
+library(corrgram)
+data(Boston)
+boston.sub<-Boston[c('lstat','indus','nox','rm','medv')]
+cor.test(boston.sub,)
+?cor.test
+?corrgram
+corrgram(boston.sub,upper.panel = panel.conf)
+par(mfrow=c(2,2)) ###
+plot(boston.sub$medv,boston.sub$lstat)
+plot(boston.sub$medv,boston.sub$indus)
+plot(boston.sub$medv,boston.sub$nox)
+plot(boston.sub$medv,boston.sub$rm)
+pairs(boston.sub)
+cor.test(c(1,2,3,4,5),c(1,0,3,4,5),method='pearson')
+cor(c(1,2,3,4,5),c(1,0,3,4,5))
+iris_copy[which(iris_copy$Sepal.Length>5),]
+###---1장
+v<-c(10,20,30,40,50)
+x<-c(1,'a',2,'b')
+fruits<-c('apple','melon','banana','grape','tomato','potato')
+sort(fruits)
+sort(fruits,decreasing = T)
+fruits[seq(2,6,by=2)]
+arr<-c(1:8,11:18,111:118)
+dim(arr)<-c(2,4,3)
+arr
+data('state')
+state.x77[3,8]
+state.x77[c(5,22,44),c(1,4,7)]
+state.x77[-(5:49),(3:5)]
+state.x77[state.x77[,'Income']>4000,]
+
+data('iris')
+iris[(iris$Sepal.Width>3.5),]
+iris[iris[,'Species']=='versicolor',]
+names(iris)
+names(iris)[grep('width',names(iris),ignore.case = T)]
+iris[grep('Petal',names(iris))]
+##---------------3장
+test<-c(1,2,NA,4)
+test[!is.na(test)]
+iris_c<-iris
+for(i in 1:length(iris_c$Sepal.Length)){
+  if(iris_c$Sepal.Length[i]>5)
+    iris_c$output[i]<-'greater than 5'
+  else
+    iris_c$output[i]<-'less than 5'
+}
+iris_c
+ifelse(iris_c$Sepal.Length>5,'greater than 5','less than 5')
+?apply
+apply(iris_c,1,function(x){
+  if(x['Sepal.Length']>5)
+    'greater than 5'
+  else
+    'less than 5'
+})
+
+which(iris$Species=='versicolor')
+iris[which(iris$Species=='versicolor'),]
+subset(iris,iris$Species=='versicolor')
+?subset
+
+m<-matrix(data=cbind(rnorm(30,0),rnorm(30,2),rnorm(30,5)),nrow=30,ncol=3)
+apply(m,2,function(x)(length(x[x<0])))
+m
+apply(m,2,function(x)(mean(x[x>0])))
+library(lattice)
+?lapply()
+lapply(barley,function(x)unique(x))
+sapply(barley,function(x)unique(x))
+sapply(barley, function(x)length(unique(x)))
+tapply(iris$Petal.Length,iris$Species,mean)
+
+?tapply
+plot(iris$Petal.Length,iris$Petal.Width,pch=21,bg=c('red','green','blue')[unclass(iris$Species)])
+barplot(tapply(iris$Petal.Length,iris$Species,mean))
+##7장
+library(MASS)
+data("Boston")
+boston.sub<-Boston[c('lstat','indus','nox','rm','medv')]
+boston.sub
+corrgram(cor(boston.sub),upper.panel = panel.conf)
+par(mfrow=c(2,2))
+sapply(names(boston.sub[1:4]),function(x){
+  plot(boston.sub[,x],boston.sub$medv,xlab = x)
+})
+pairs(boston.sub)
+cor.test(c(1,2,3,4,5),c(1,0,3,4,5))
+
+?do.call
+?split
+split(iris,iris$Species)
+?lines
