@@ -1,0 +1,135 @@
+---
+---
+#교통사고 사망자의 분류 분석
+##
+###데이터 불러오기
+```{r}
+csv_Data<-read.csv('전국_사망교통사고_2017.csv') 
+head(csv_Data)
+```
+
+###불필요한 데이터 삭제
+```{r}
+library(dplyr)
+Data<-csv_Data%>%
+  select(-발생년,-발생년월일시,-발생분,-당사자종별_1당_대분류,-당사자종별_2당_대분류,-사고유형) 
+```
+###데이터 확인
+```{r}
+str(Data)
+```
+###데이터 타입 형식 변환
+```{r}
+Data$발생지시군구<-as.character(Data$발생지시군구)
+```
+###교차검증 준비
+######(createDataPartition()사용)하기 위해 caret 라이브러리 사용
+```{r}
+library(caret)
+set.seed(137) #항상 같은데이터로 분리하기 위해서
+test_idx<-createDataPartition(Data$주야,p=0.3)$Resample1 
+
+test_Data<-Data[test_idx,]
+train_Data<-Data[-test_idx,]
+NROW(test_Data)
+prop.table(table(test_Data$주야))
+NROW(train_Data)
+prop.table(table(train_Data$주야))
+
+```
+###교차검증 함수 생성
+```{r}
+create_ten_fold_cv<-function(){
+  set.seed(137)
+  lapply(createFolds(train_Data,k=10),function(idx){
+    return(list(train=train_Data[-idx,],
+                validation=train_Data[idx,]))
+  })
+}
+x<-create_ten_fold_cv()
+head(str(x))
+head(x$Fold1$train)
+```
+### 데이터 탐색
+#####Hmisc패키지를 이용하여 summary에 formula지정 가능하게 한다.
+```{r}
+library(Hmisc)
+summary(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=x$Fold1$train,method='reverse')
+```
+
+
+###featureplot를 이용한 데이터 시각화
+```{r}
+Data_complete<-x$Fold1$train[complete.cases(x$Fold1$train),]
+featurePlot(
+  Data_complete[,
+                sapply(names(Data_complete),
+                       function(n){is.numeric(Data_complete[,n])})],
+  Data_complete[,c('주야')],
+  "ellipse")
+```
+
+### mosaicplot를 이용한 데이터 시각화
+```{r}
+mosaicplot(주야~요일+사고유형_대분류,data=x$Fold1$train,color=TRUE,main='요일 and 사고유형')
+```
+
+ 
+### xtabs를 이용한 사망자수 
+```{r}
+xtabs(~요일+사고유형_대분류,data=x$Fold1$train)
+xtabs(주야=="야간"~요일+사고유형_대분류,data=x$Fold1$train)/xtabs(~요일+사고유형_대분류,data=x$Fold1$train)
+xtabs(주야=="주간"~요일+사고유형_대분류,data=x$Fold1$train)/xtabs(~요일+사고유형_대분류,data=x$Fold1$train)
+```
+### 평가 메트릭
+#####rpart 모델
+```{r}
+library(rpart)
+m<-rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data)
+p<-predict(m,newdata=train_Data,type='class')
+head(p)
+```
+###foreach 사용하여 분석
+```{r}
+library(foreach) 
+folds<-create_ten_fold_cv()
+rpart_result<-foreach(f=folds) %do% {
+  model_rpart<-rpart(
+    주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태, data=f$train)
+  predicted<-predict(model_rpart, newdata=f$validation,
+                     type="class")
+  return(list(actual=f$validation$주야,predicted=predicted))
+}
+head(rpart_result)
+```
+###Accuracy 평가
+#####evaluation함수 생성
+```{r}
+evaluation<-function(lst){
+  accuracy<-sapply(lst,function(one_result){ #벡터로 묶음
+    return(sum(one_result$predicted==one_result$actual)
+           /NROW(one_result$actual))
+  })
+  print(sprintf("MEAN +/- SD: %.3f +/- %.3f",
+                mean(accuracy),sd(accuracy))) #평균, 표준편차
+  return(accuracy)
+}
+rpart_accuracy<-evaluation(rpart_result) #Accuracy 계산결과 rpart 모델성능 판단
+```
+###ctree()를 사용한 교차 검증
+```{r}
+library(party)
+ctree_result<-foreach(f=folds)%do% {
+  model_ctree<-ctree(
+    주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=f$train)
+  predicted<-predict(model_ctree,newdata=f$validation,
+                     type='response')
+  return(list(actual=f$validation$주야,predicted=predicted))
+}
+(ctree_accuracy<-evaluation(ctree_result))
+```
+###정확도 분포
+```{r}
+plot(density(rpart_accuracy),main='rpart VS ctree')
+lines(density(ctree_accuracy),col='red',lty='dashed')
+```

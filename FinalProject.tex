@@ -1,0 +1,2759 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={FinalProject},
+            pdfauthor={Jaegeun},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{FinalProject}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Jaegeun}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2018년 6월 11일}
+
+
+\begin{document}
+\maketitle
+
+\section{교통사고 사망자의 분류 분석}\label{---}
+
+\subsection{}\label{section}
+
+\subsubsection{데이터 불러오기}\label{-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{csv_Data<-}\KeywordTok{read.csv}\NormalTok{(}\StringTok{'전국_사망교통사고_2017.csv'}\NormalTok{) }
+\KeywordTok{head}\NormalTok{(csv_Data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   발생년 발생년월일시 발생분 주야 요일 사망자수 사상자수 중상자수 경상자수
+## 1   2017   2017010101     15 야간   일        1        2        1        0
+## 2   2017   2017010102     28 야간   일        1        1        0        0
+## 3   2017   2017010102     43 야간   일        1        2        0        1
+## 4   2017   2017010102     22 야간   일        1        1        0        0
+## 5   2017   2017010104     37 야간   일        1        1        0        0
+## 6   2017   2017010104      0 야간   일        1        2        1        0
+##   부상신고자수 발생지시도 발생지시군구 사고유형_대분류 사고유형_중분류
+## 1            0       전남       장성군          차대차            기타
+## 2            0       서울       송파구        차대사람          횡단중
+## 3            0       충남       홍성군          차대차            추돌
+## 4            0       충남       아산시        차량단독      공작물충돌
+## 5            0       서울       금천구        차대사람            기타
+## 6            0       강원       춘천시        차대사람          횡단중
+##     사고유형 법규위반_대분류             법규위반 도로형태_대분류
+## 1       기타  운전자법규위반 안전운전 의무 불이행          단일로
+## 2     횡단중  운전자법규위반 안전운전 의무 불이행          교차로
+## 3       추돌  운전자법규위반 안전운전 의무 불이행          단일로
+## 4 공작물충돌  운전자법규위반 안전운전 의무 불이행          단일로
+## 5       기타  운전자법규위반 안전운전 의무 불이행          단일로
+## 6     횡단중  운전자법규위반 안전운전 의무 불이행          단일로
+##     도로형태 당사자종별_1당_대분류 당사자종별_1당 당사자종별_2당_대분류
+## 1 기타단일로                승용차         승용차                승용차
+## 2 교차로부근                승용차         승용차                보행자
+## 3 기타단일로                승용차         승용차                승용차
+## 4 기타단일로                승용차         승용차                  없음
+## 5 기타단일로                승용차         승용차                보행자
+## 6 기타단일로                승용차         승용차                보행자
+##   당사자종별_2당 발생위치X_UTMK 발생위치Y_UTMK     경도     위도
+## 1         승용차         933501        1700129 126.7686 35.29446
+## 2         보행자         967570        1944453 127.1331 37.49874
+## 3         승용차         916497        1842880 126.5666 36.58007
+## 4           없음         961608        1864573 127.0698 36.77851
+## 5         보행자         946778        1941695 126.8981 37.47295
+## 6         보행자        1021195        1985798 127.7410 37.87175
+\end{verbatim}
+
+\subsubsection{불필요한 데이터 삭제}\label{--}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Data<-csv_Data}\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{발생년,}\OperatorTok{-}\NormalTok{발생년월일시,}\OperatorTok{-}\NormalTok{발생분,}\OperatorTok{-}\NormalTok{당사자종별_}\DecValTok{1}\NormalTok{당_대분류,}\OperatorTok{-}\NormalTok{당사자종별_}\DecValTok{2}\NormalTok{당_대분류,}\OperatorTok{-}\NormalTok{사고유형) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{데이터 확인}\label{-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(Data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    4064 obs. of  21 variables:
+##  $ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 1 1 2 1 1 ...
+##  $ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 5 5 ...
+##  $ 사망자수       : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ 사상자수       : int  2 1 2 1 1 2 1 5 3 7 ...
+##  $ 중상자수       : int  1 0 0 0 0 1 0 3 1 4 ...
+##  $ 경상자수       : int  0 0 1 0 0 0 0 1 1 2 ...
+##  $ 부상신고자수   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 13 9 16 16 9 1 2 5 15 16 ...
+##  $ 발생지시군구   : Factor w/ 206 levels "가평군","강남구",..: 158 100 201 108 39 182 203 81 89 21 ...
+##  $ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2 1 2 3 1 1 1 3 2 2 ...
+##  $ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 2 14 12 1 2 14 14 4 13 2 ...
+##  $ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 9 9 ...
+##  $ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 1 3 3 3 3 3 3 3 3 ...
+##  $ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 4 7 7 7 7 7 2 7 7 ...
+##  $ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 6 6 12 6 6 ...
+##  $ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 7 4 7 9 4 4 4 9 14 7 ...
+##  $ 발생위치X_UTMK : int  933501 967570 916497 961608 946778 1021195 959140 942432 922514 962530 ...
+##  $ 발생위치Y_UTMK : int  1700129 1944453 1842880 1864573 1941695 1985798 1912805 1692541 1476665 1823895 ...
+##  $ 경도           : num  127 127 127 127 127 ...
+##  $ 위도           : num  35.3 37.5 36.6 36.8 37.5 ...
+\end{verbatim}
+
+\subsubsection{데이터 타입 형식 변환}\label{---}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Data}\OperatorTok{$}\NormalTok{발생지시군구<-}\KeywordTok{as.character}\NormalTok{(Data}\OperatorTok{$}\NormalTok{발생지시군구)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{교차검증 준비}\label{-}
+
+(createDataPartition()사용)하기 위해 caret 라이브러리 사용
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{137}\NormalTok{) }\CommentTok{#항상 같은데이터로 분리하기 위해서}
+\NormalTok{test_idx<-}\KeywordTok{createDataPartition}\NormalTok{(Data}\OperatorTok{$}\NormalTok{주야,}\DataTypeTok{p=}\FloatTok{0.3}\NormalTok{)}\OperatorTok{$}\NormalTok{Resample1 }
+
+\NormalTok{test_Data<-Data[test_idx,]}
+\NormalTok{train_Data<-Data[}\OperatorTok{-}\NormalTok{test_idx,]}
+\KeywordTok{NROW}\NormalTok{(test_Data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1220
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{prop.table}\NormalTok{(}\KeywordTok{table}\NormalTok{(test_Data}\OperatorTok{$}\NormalTok{주야))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     야간     주간 
+## 0.504918 0.495082
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{NROW}\NormalTok{(train_Data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2844
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{prop.table}\NormalTok{(}\KeywordTok{table}\NormalTok{(train_Data}\OperatorTok{$}\NormalTok{주야))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     야간     주간 
+## 0.504571 0.495429
+\end{verbatim}
+
+\subsubsection{교차검증 함수 생성}\label{--}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{create_ten_fold_cv<-}\ControlFlowTok{function}\NormalTok{()\{}
+  \KeywordTok{set.seed}\NormalTok{(}\DecValTok{137}\NormalTok{)}
+  \KeywordTok{lapply}\NormalTok{(}\KeywordTok{createFolds}\NormalTok{(train_Data,}\DataTypeTok{k=}\DecValTok{10}\NormalTok{),}\ControlFlowTok{function}\NormalTok{(idx)\{}
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\DataTypeTok{train=}\NormalTok{train_Data[}\OperatorTok{-}\NormalTok{idx,],}
+                \DataTypeTok{validation=}\NormalTok{train_Data[idx,]))}
+\NormalTok{  \})}
+\NormalTok{\}}
+\NormalTok{x<-}\KeywordTok{create_ten_fold_cv}\NormalTok{()}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{str}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 8
+##  $ Fold1:List of 2
+##   ..$ train     :'data.frame':   2840 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 2 1 1 1 1 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 4 4 ...
+##   .. ..$ 사망자수       : int [1:2840] 1 1 1 1 1 1 1 2 1 1 ...
+##   .. ..$ 사상자수       : int [1:2840] 1 2 1 2 1 5 3 2 2 1 ...
+##   .. ..$ 중상자수       : int [1:2840] 0 0 0 1 0 3 1 0 0 0 ...
+##   .. ..$ 경상자수       : int [1:2840] 0 1 0 0 0 1 1 0 1 0 ...
+##   .. ..$ 부상신고자수   : int [1:2840] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 1 2 5 15 13 11 9 ...
+##   .. ..$ 발생지시군구   : chr [1:2840] "송파구" "홍성군" "아산시" "춘천시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 1 3 2 3 1 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 14 4 13 7 11 14 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 1 4 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 3 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 2 7 7 7 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 12 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 4 9 14 9 4 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2840] 967570 916497 961608 1021195 959140 942432 922514 905827 1162551 948413 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2840] 1944453 1842880 1864573 1985798 1912805 1692541 1476665 1665350 1720013 1957900 ...
+##   .. ..$ 경도           : num [1:2840] 127 127 127 128 127 ...
+##   .. ..$ 위도           : num [1:2840] 37.5 36.6 36.8 37.9 37.2 ...
+##   ..$ validation:'data.frame':   4 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 2 2 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 4 4 4
+##   .. ..$ 사망자수       : int [1:4] 1 1 1 1
+##   .. ..$ 사상자수       : int [1:4] 7 1 1 5
+##   .. ..$ 중상자수       : int [1:4] 4 0 0 0
+##   .. ..$ 경상자수       : int [1:4] 2 0 0 4
+##   .. ..$ 부상신고자수   : int [1:4] 0 0 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 16 9 4 9
+##   .. ..$ 발생지시군구   : chr [1:4] "공주시" "영등포구" "울진군" "금천구"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2 3 1 2
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 2 7 14 13
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 7
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 1 3 1
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 3 7 3
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 9 7 6
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 7 9 4 8
+##   .. ..$ 발생위치X_UTMK : int [1:4] 962530 946757 1166337 947235
+##   .. ..$ 발생위치Y_UTMK : int [1:4] 1823895 1943309 1901018 1938476
+##   .. ..$ 경도           : num [1:4] 127 127 129 127
+##   .. ..$ 위도           : num [1:4] 36.4 37.5 37.1 37.4
+##  $ Fold2:List of 2
+##   ..$ train     :'data.frame':   2843 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 2 1 1 1 1 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 5 4 ...
+##   .. ..$ 사망자수       : int [1:2843] 1 1 1 1 1 1 1 1 2 1 ...
+##   .. ..$ 사상자수       : int [1:2843] 1 2 1 2 1 5 3 7 2 2 ...
+##   .. ..$ 중상자수       : int [1:2843] 0 0 0 1 0 3 1 4 0 0 ...
+##   .. ..$ 경상자수       : int [1:2843] 0 1 0 0 0 1 1 2 0 1 ...
+##   .. ..$ 부상신고자수   : int [1:2843] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 1 2 5 15 16 13 11 ...
+##   .. ..$ 발생지시군구   : chr [1:2843] "송파구" "홍성군" "아산시" "춘천시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 1 3 2 2 3 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 14 4 13 2 7 11 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 9 1 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 3 3 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 2 7 7 7 7 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 12 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 4 9 14 7 9 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2843] 967570 916497 961608 1021195 959140 942432 922514 962530 905827 1162551 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2843] 1944453 1842880 1864573 1985798 1912805 1692541 1476665 1823895 1665350 1720013 ...
+##   .. ..$ 경도           : num [1:2843] 127 127 127 128 127 ...
+##   .. ..$ 위도           : num [1:2843] 37.5 36.6 36.8 37.9 37.2 ...
+##   ..$ validation:'data.frame':   1 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 4
+##   .. ..$ 사망자수       : int 1
+##   .. ..$ 사상자수       : int 1
+##   .. ..$ 중상자수       : int 0
+##   .. ..$ 경상자수       : int 0
+##   .. ..$ 부상신고자수   : int 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 14
+##   .. ..$ 발생지시군구   : chr "전주시"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 4
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 3
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4
+##   .. ..$ 발생위치X_UTMK : int 966955
+##   .. ..$ 발생위치Y_UTMK : int 1754577
+##   .. ..$ 경도           : num 127
+##   .. ..$ 위도           : num 35.8
+##  $ Fold3:List of 2
+##   ..$ train     :'data.frame':   2842 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 2 1 1 1 1 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 4 4 ...
+##   .. ..$ 사망자수       : int [1:2842] 1 1 1 1 1 1 1 2 1 1 ...
+##   .. ..$ 사상자수       : int [1:2842] 1 2 1 2 1 5 7 2 2 1 ...
+##   .. ..$ 중상자수       : int [1:2842] 0 0 0 1 0 3 4 0 0 0 ...
+##   .. ..$ 경상자수       : int [1:2842] 0 1 0 0 0 1 2 0 1 0 ...
+##   .. ..$ 부상신고자수   : int [1:2842] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 1 2 5 16 13 11 9 ...
+##   .. ..$ 발생지시군구   : chr [1:2842] "송파구" "홍성군" "아산시" "춘천시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 1 3 2 3 1 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 14 4 2 7 11 14 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 1 4 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 3 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 2 7 7 7 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 12 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 4 9 7 9 4 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2842] 967570 916497 961608 1021195 959140 942432 962530 905827 1162551 948413 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2842] 1944453 1842880 1864573 1985798 1912805 1692541 1823895 1665350 1720013 1957900 ...
+##   .. ..$ 경도           : num [1:2842] 127 127 127 128 127 ...
+##   .. ..$ 위도           : num [1:2842] 37.5 36.6 36.8 37.9 37.2 ...
+##   ..$ validation:'data.frame':   2 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 4
+##   .. ..$ 사망자수       : int [1:2] 1 1
+##   .. ..$ 사상자수       : int [1:2] 3 1
+##   .. ..$ 중상자수       : int [1:2] 1 0
+##   .. ..$ 경상자수       : int [1:2] 1 0
+##   .. ..$ 부상신고자수   : int [1:2] 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 15 9
+##   .. ..$ 발생지시군구   : chr [1:2] "서귀포시" "광진구"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2 3
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 13 1
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 3
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 7
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 14 9
+##   .. ..$ 발생위치X_UTMK : int [1:2] 922514 964223
+##   .. ..$ 발생위치Y_UTMK : int [1:2] 1476665 1950661
+##   .. ..$ 경도           : num [1:2] 127 127
+##   .. ..$ 위도           : num [1:2] 33.3 37.6
+##  $ Fold4:List of 2
+##   ..$ train     :'data.frame':   2843 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 2 1 1 1 1 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 5 4 ...
+##   .. ..$ 사망자수       : int [1:2843] 1 1 1 1 1 1 1 1 2 1 ...
+##   .. ..$ 사상자수       : int [1:2843] 1 2 1 2 1 5 3 7 2 2 ...
+##   .. ..$ 중상자수       : int [1:2843] 0 0 0 1 0 3 1 4 0 0 ...
+##   .. ..$ 경상자수       : int [1:2843] 0 1 0 0 0 1 1 2 0 1 ...
+##   .. ..$ 부상신고자수   : int [1:2843] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 1 2 5 15 16 13 11 ...
+##   .. ..$ 발생지시군구   : chr [1:2843] "송파구" "홍성군" "아산시" "춘천시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 1 3 2 2 3 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 14 4 13 2 7 11 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 9 1 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 3 3 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 2 7 7 7 7 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 12 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 4 9 14 7 9 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2843] 967570 916497 961608 1021195 959140 942432 922514 962530 905827 1162551 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2843] 1944453 1842880 1864573 1985798 1912805 1692541 1476665 1823895 1665350 1720013 ...
+##   .. ..$ 경도           : num [1:2843] 127 127 127 128 127 ...
+##   .. ..$ 위도           : num [1:2843] 37.5 36.6 36.8 37.9 37.2 ...
+##   ..$ validation:'data.frame':   1 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 4
+##   .. ..$ 사망자수       : int 1
+##   .. ..$ 사상자수       : int 2
+##   .. ..$ 중상자수       : int 1
+##   .. ..$ 경상자수       : int 0
+##   .. ..$ 부상신고자수   : int 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 4
+##   .. ..$ 발생지시군구   : chr "청송군"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 13
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 13
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 7
+##   .. ..$ 발생위치X_UTMK : int 1134705
+##   .. ..$ 발생위치Y_UTMK : int 1810932
+##   .. ..$ 경도           : num 129
+##   .. ..$ 위도           : num 36.3
+##  $ Fold5:List of 2
+##   ..$ train     :'data.frame':   2841 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 2 1 1 1 2 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 4 4 ...
+##   .. ..$ 사망자수       : int [1:2841] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 사상자수       : int [1:2841] 1 2 1 2 1 5 3 7 1 1 ...
+##   .. ..$ 중상자수       : int [1:2841] 0 0 0 1 0 3 1 4 0 0 ...
+##   .. ..$ 경상자수       : int [1:2841] 0 1 0 0 0 1 1 2 0 0 ...
+##   .. ..$ 부상신고자수   : int [1:2841] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 1 2 5 15 16 9 14 ...
+##   .. ..$ 발생지시군구   : chr [1:2841] "송파구" "홍성군" "아산시" "춘천시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 1 3 2 2 1 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 14 4 13 2 14 14 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 4 4 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 1 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 2 7 7 3 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 12 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 4 9 14 7 4 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2841] 967570 916497 961608 1021195 959140 942432 922514 962530 948413 966955 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2841] 1944453 1842880 1864573 1985798 1912805 1692541 1476665 1823895 1957900 1754577 ...
+##   .. ..$ 경도           : num [1:2841] 127 127 127 128 127 ...
+##   .. ..$ 위도           : num [1:2841] 37.5 36.6 36.8 37.9 37.2 ...
+##   ..$ validation:'data.frame':   3 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 4 4
+##   .. ..$ 사망자수       : int [1:3] 2 1 1
+##   .. ..$ 사상자수       : int [1:3] 2 2 1
+##   .. ..$ 중상자수       : int [1:3] 0 0 0
+##   .. ..$ 경상자수       : int [1:3] 0 1 0
+##   .. ..$ 부상신고자수   : int [1:3] 0 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 13 11 2
+##   .. ..$ 발생지시군구   : chr [1:3] "무안군" "울주군" "안성시"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 3 1 1
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 7 11 2
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 1 9
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 3 3
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 7 7
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 9 4 4
+##   .. ..$ 발생위치X_UTMK : int [1:3] 905827 1162551 978913
+##   .. ..$ 발생위치Y_UTMK : int [1:3] 1665350 1720013 1900967
+##   .. ..$ 경도           : num [1:3] 126 129 127
+##   .. ..$ 위도           : num [1:3] 35 35.5 37.1
+##  $ Fold6:List of 2
+##   ..$ train     :'data.frame':   2841 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 1 1 1 1 1 2 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 4 4 4 ...
+##   .. ..$ 사망자수       : int [1:2841] 1 1 1 1 1 1 2 1 1 1 ...
+##   .. ..$ 사상자수       : int [1:2841] 1 2 1 1 3 7 2 2 1 1 ...
+##   .. ..$ 중상자수       : int [1:2841] 0 0 0 0 1 4 0 0 0 0 ...
+##   .. ..$ 경상자수       : int [1:2841] 0 1 0 0 1 2 0 1 0 0 ...
+##   .. ..$ 부상신고자수   : int [1:2841] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 16 2 15 16 13 11 9 14 ...
+##   .. ..$ 발생지시군구   : chr [1:2841] "송파구" "홍성군" "아산시" "화성시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 2 3 1 2 2 3 1 1 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 12 1 14 13 2 7 11 14 14 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 1 4 4 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 1 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 7 7 7 7 3 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 6 6 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 7 9 4 14 7 9 4 4 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2841] 967570 916497 961608 959140 922514 962530 905827 1162551 948413 966955 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2841] 1944453 1842880 1864573 1912805 1476665 1823895 1665350 1720013 1957900 1754577 ...
+##   .. ..$ 경도           : num [1:2841] 127 127 127 127 127 ...
+##   .. ..$ 위도           : num [1:2841] 37.5 36.6 36.8 37.2 33.3 ...
+##   ..$ validation:'data.frame':   3 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 2 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 4
+##   .. ..$ 사망자수       : int [1:3] 1 1 1
+##   .. ..$ 사상자수       : int [1:3] 2 5 1
+##   .. ..$ 중상자수       : int [1:3] 1 3 0
+##   .. ..$ 경상자수       : int [1:3] 0 1 0
+##   .. ..$ 부상신고자수   : int [1:3] 0 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 1 5 3
+##   .. ..$ 발생지시군구   : chr [1:3] "춘천시" "북구" "남해군"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 3 1
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 4 14
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 3 1
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 2 4
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 12 12
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 9 4
+##   .. ..$ 발생위치X_UTMK : int [1:3] 1021195 942432 1048067
+##   .. ..$ 발생위치Y_UTMK : int [1:3] 1985798 1692541 1657068
+##   .. ..$ 경도           : num [1:3] 128 127 128
+##   .. ..$ 위도           : num [1:3] 37.9 35.2 34.9
+##  $ Fold7:List of 2
+##   ..$ train     :'data.frame':   2841 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 1 2 1 1 1 1 2 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 5 5 4 4 ...
+##   .. ..$ 사망자수       : int [1:2841] 1 1 1 1 1 1 1 2 1 1 ...
+##   .. ..$ 사상자수       : int [1:2841] 1 1 2 1 5 3 7 2 2 1 ...
+##   .. ..$ 중상자수       : int [1:2841] 0 0 1 0 3 1 4 0 0 0 ...
+##   .. ..$ 경상자수       : int [1:2841] 0 0 0 0 1 1 2 0 1 0 ...
+##   .. ..$ 부상신고자수   : int [1:2841] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 1 2 5 15 16 13 11 14 ...
+##   .. ..$ 발생지시군구   : chr [1:2841] "송파구" "아산시" "춘천시" "화성시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 3 1 1 3 2 2 3 1 1 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 1 14 14 4 13 2 7 11 14 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 9 9 1 4 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3 3 3 3 3 3 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7 2 7 7 7 7 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 6 12 6 6 6 6 6 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 9 4 4 9 14 7 9 4 4 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2841] 967570 961608 1021195 959140 942432 922514 962530 905827 1162551 966955 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2841] 1944453 1864573 1985798 1912805 1692541 1476665 1823895 1665350 1720013 1754577 ...
+##   .. ..$ 경도           : num [1:2841] 127 127 128 127 127 ...
+##   .. ..$ 위도           : num [1:2841] 37.5 36.8 37.9 37.2 35.2 ...
+##   ..$ validation:'data.frame':   3 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 4 4
+##   .. ..$ 사망자수       : int [1:3] 1 1 1
+##   .. ..$ 사상자수       : int [1:3] 2 1 1
+##   .. ..$ 중상자수       : int [1:3] 0 0 0
+##   .. ..$ 경상자수       : int [1:3] 1 0 0
+##   .. ..$ 부상신고자수   : int [1:3] 0 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 16 9 4
+##   .. ..$ 발생지시군구   : chr [1:3] "홍성군" "은평구" "의성군"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2 1 3
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 12 14 4
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 4 9
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 1 3
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 3 2
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 9
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 7 4 9
+##   .. ..$ 발생위치X_UTMK : int [1:3] 916497 948413 1080719
+##   .. ..$ 발생위치Y_UTMK : int [1:3] 1842880 1957900 1818230
+##   .. ..$ 경도           : num [1:3] 127 127 128
+##   .. ..$ 위도           : num [1:3] 36.6 37.6 36.4
+##  $ Fold8:List of 2
+##   ..$ train     :'data.frame':   2840 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 2 1 1 1 1 1 2 2 ...
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 5 5 5 4 4 4 4 ...
+##   .. ..$ 사망자수       : int [1:2840] 1 1 1 1 1 2 1 1 1 1 ...
+##   .. ..$ 사상자수       : int [1:2840] 2 2 5 3 7 2 2 1 1 1 ...
+##   .. ..$ 중상자수       : int [1:2840] 0 1 3 1 4 0 0 0 0 0 ...
+##   .. ..$ 경상자수       : int [1:2840] 1 0 1 1 2 0 1 0 0 0 ...
+##   .. ..$ 부상신고자수   : int [1:2840] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 16 1 5 15 16 13 11 9 14 9 ...
+##   .. ..$ 발생지시군구   : chr [1:2840] "홍성군" "춘천시" "북구" "서귀포시" ...
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 2 1 3 2 2 3 1 1 1 3 ...
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 12 14 4 13 2 7 11 14 14 7 ...
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 9 9 9 1 4 4 9 ...
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 3 3 3 3 3 3 3 1 1 1 ...
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 7 7 2 7 7 7 7 3 3 3 ...
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 12 6 6 6 6 6 6 9 ...
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 7 4 9 14 7 9 4 4 4 9 ...
+##   .. ..$ 발생위치X_UTMK : int [1:2840] 916497 1021195 942432 922514 962530 905827 1162551 948413 966955 946757 ...
+##   .. ..$ 발생위치Y_UTMK : int [1:2840] 1842880 1985798 1692541 1476665 1823895 1665350 1720013 1957900 1754577 1943309 ...
+##   .. ..$ 경도           : num [1:2840] 127 128 127 127 127 ...
+##   .. ..$ 위도           : num [1:2840] 36.6 37.9 35.2 33.3 36.4 ...
+##   ..$ validation:'data.frame':   4 obs. of  21 variables:
+##   .. ..$ 주야           : Factor w/ 2 levels "야간","주간": 1 1 1 2
+##   .. ..$ 요일           : Factor w/ 7 levels "금","목","수",..: 5 5 5 4
+##   .. ..$ 사망자수       : int [1:4] 1 1 1 1
+##   .. ..$ 사상자수       : int [1:4] 1 1 1 1
+##   .. ..$ 중상자수       : int [1:4] 0 0 0 0
+##   .. ..$ 경상자수       : int [1:4] 0 0 0 0
+##   .. ..$ 부상신고자수   : int [1:4] 0 0 0 0
+##   .. ..$ 발생지시도     : Factor w/ 17 levels "강원","경기",..: 9 16 2 15
+##   .. ..$ 발생지시군구   : chr [1:4] "송파구" "아산시" "화성시" "제주시"
+##   .. ..$ 사고유형_대분류: Factor w/ 3 levels "차대사람","차대차",..: 1 3 1 1
+##   .. ..$ 사고유형_중분류: Factor w/ 15 levels "공작물충돌","기타",..: 14 1 14 14
+##   .. ..$ 법규위반_대분류: Factor w/ 2 levels "운전자법규위반",..: 1 1 1 1
+##   .. ..$ 법규위반       : Factor w/ 15 levels "과속","교차로 통행방법 위반",..: 9 9 9 4
+##   .. ..$ 도로형태_대분류: Factor w/ 5 levels "교차로","기타",..: 1 3 3 3
+##   .. ..$ 도로형태       : Factor w/ 11 levels "고가도로위","교량위",..: 4 7 7 7
+##   .. ..$ 당사자종별_1당 : Factor w/ 12 levels "개인형이동수단(PM)",..: 6 6 6 12
+##   .. ..$ 당사자종별_2당 : Factor w/ 14 levels "건설기계","기타",..: 4 9 4 4
+##   .. ..$ 발생위치X_UTMK : int [1:4] 967570 961608 959140 910531
+##   .. ..$ 발생위치Y_UTMK : int [1:4] 1944453 1864573 1912805 1502842
+##   .. ..$ 경도           : num [1:4] 127 127 127 127
+##   .. ..$ 위도           : num [1:4] 37.5 36.8 37.2 33.5
+\end{verbatim}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   주야 요일 사망자수 사상자수 중상자수 경상자수 부상신고자수 발생지시도
+## 2 야간   일        1        1        0        0            0       서울
+## 3 야간   일        1        2        0        1            0       충남
+## 4 야간   일        1        1        0        0            0       충남
+## 6 야간   일        1        2        1        0            0       강원
+## 7 야간   일        1        1        0        0            0       경기
+## 8 주간   일        1        5        3        1            0       광주
+##   발생지시군구 사고유형_대분류 사고유형_중분류 법규위반_대분류
+## 2       송파구        차대사람          횡단중  운전자법규위반
+## 3       홍성군          차대차            추돌  운전자법규위반
+## 4       아산시        차량단독      공작물충돌  운전자법규위반
+## 6       춘천시        차대사람          횡단중  운전자법규위반
+## 7       화성시        차대사람          횡단중  운전자법규위반
+## 8         북구        차량단독        도로이탈  운전자법규위반
+##               법규위반 도로형태_대분류   도로형태 당사자종별_1당
+## 2 안전운전 의무 불이행          교차로 교차로부근         승용차
+## 3 안전운전 의무 불이행          단일로 기타단일로         승용차
+## 4 안전운전 의무 불이행          단일로 기타단일로         승용차
+## 6 안전운전 의무 불이행          단일로 기타단일로         승용차
+## 7 안전운전 의무 불이행          단일로 기타단일로         승용차
+## 8 안전운전 의무 불이행          단일로     교량위         화물차
+##   당사자종별_2당 발생위치X_UTMK 발생위치Y_UTMK     경도     위도
+## 2         보행자         967570        1944453 127.1331 37.49874
+## 3         승용차         916497        1842880 126.5666 36.58007
+## 4           없음         961608        1864573 127.0698 36.77851
+## 6         보행자        1021195        1985798 127.7410 37.87175
+## 7         보행자         959140        1912805 127.0395 37.21317
+## 8           없음         942432        1692541 126.8674 35.22660
+\end{verbatim}
+
+\subsubsection{데이터 탐색}\label{-}
+
+\subparagraph{Hmisc패키지를 이용하여 summary에 formula지정 가능하게
+한다.}\label{hmisc--summary-formula--.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(Hmisc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'Hmisc' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: survival
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'survival'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:caret':
+## 
+##     cluster
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Formula
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'Formula' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Hmisc'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:dplyr':
+## 
+##     src, summarize
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     format.pval, units
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(주야}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{발생지시도}\OperatorTok{+}\NormalTok{사고유형_대분류}\OperatorTok{+}\NormalTok{사고유형_중분류}\OperatorTok{+}\NormalTok{도로형태,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train,}\DataTypeTok{method=}\StringTok{'reverse'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 
+## Descriptive Statistics by 주야
+## 
+## +----------------------------+--------+--------+
+## |                            |야간      |주간      |
+## |                            |(N=1434)  |(N=1406)  |
+## +----------------------------+--------+--------+
+## |요일 : 금                   |15%  (217)|15%  (205)|
+## +----------------------------+--------+--------+
+## |    목                      |15%  (219)|14%  (199)|
+## +----------------------------+--------+--------+
+## |    수                      |13%  (190)|14%  (193)|
+## +----------------------------+--------+--------+
+## |    월                      |13%  (186)|17%  (233)|
+## +----------------------------+--------+--------+
+## |    일                      |14%  (195)|10%  (145)|
+## +----------------------------+--------+--------+
+## |    토                      |15%  (217)|13%  (189)|
+## +----------------------------+--------+--------+
+## |    화                      |15%  (210)|17%  (242)|
+## +----------------------------+--------+--------+
+## |발생지시도 : 강원           | 5%  ( 71)| 6%  ( 82)|
+## +----------------------------+--------+--------+
+## |    경기                    |21%  (308)|17%  (239)|
+## +----------------------------+--------+--------+
+## |    경남                    | 7%  (102)|10%  (136)|
+## +----------------------------+--------+--------+
+## |    경북                    | 9%  (127)|11%  (156)|
+## +----------------------------+--------+--------+
+## |    광주                    | 3%  ( 48)| 2%  ( 35)|
+## +----------------------------+--------+--------+
+## |    대구                    | 4%  ( 54)| 4%  ( 52)|
+## +----------------------------+--------+--------+
+## |    대전                    | 2%  ( 33)| 2%  ( 25)|
+## +----------------------------+--------+--------+
+## |    부산                    | 3%  ( 49)| 4%  ( 57)|
+## +----------------------------+--------+--------+
+## |    서울                    | 9%  (136)| 7%  (100)|
+## +----------------------------+--------+--------+
+## |    세종                    | 0%  (  6)| 0%  (  6)|
+## +----------------------------+--------+--------+
+## |    울산                    | 2%  ( 29)| 1%  ( 15)|
+## +----------------------------+--------+--------+
+## |    인천                    | 3%  ( 40)| 2%  ( 31)|
+## +----------------------------+--------+--------+
+## |    전남                    | 8%  (116)|10%  (143)|
+## +----------------------------+--------+--------+
+## |    전북                    | 6%  ( 92)| 7%  (105)|
+## +----------------------------+--------+--------+
+## |    제주                    | 2%  ( 27)| 2%  ( 28)|
+## +----------------------------+--------+--------+
+## |    충남                    | 8%  (115)| 9%  (129)|
+## +----------------------------+--------+--------+
+## |    충북                    | 6%  ( 81)| 5%  ( 67)|
+## +----------------------------+--------+--------+
+## |사고유형_대분류 : 차대사람  |46%  (666)|33%  (464)|
+## +----------------------------+--------+--------+
+## |    차대차                  |34%  (483)|46%  (640)|
+## +----------------------------+--------+--------+
+## |    차량단독                |20%  (285)|21%  (302)|
+## +----------------------------+--------+--------+
+## |사고유형_중분류 : 공작물충돌| 8%  (111)| 5%  ( 74)|
+## +----------------------------+--------+--------+
+## |    기타                    |18%  (264)|16%  (223)|
+## +----------------------------+--------+--------+
+## |    길가장자리구역통행중    | 1%  ( 20)| 2%  ( 22)|
+## +----------------------------+--------+--------+
+## |    도로이탈                | 1%  ( 21)| 2%  ( 33)|
+## +----------------------------+--------+--------+
+## |    보도통행중              | 1%  (  9)| 1%  ( 16)|
+## +----------------------------+--------+--------+
+## |    전도                    | 3%  ( 43)| 5%  ( 69)|
+## +----------------------------+--------+--------+
+## |    전도전복                | 5%  ( 72)| 6%  ( 83)|
+## +----------------------------+--------+--------+
+## |    전복                    | 0%  (  3)| 1%  (  8)|
+## +----------------------------+--------+--------+
+## |    정면충돌                | 5%  ( 78)| 9%  (122)|
+## +----------------------------+--------+--------+
+## |    주/정차차량 충돌        | 0%  (  2)| 0%  (  0)|
+## +----------------------------+--------+--------+
+## |    차도통행중              | 6%  ( 82)| 3%  ( 46)|
+## +----------------------------+--------+--------+
+## |    추돌                    |11%  (151)| 9%  (132)|
+## +----------------------------+--------+--------+
+## |    측면충돌                |11%  (162)|21%  (292)|
+## +----------------------------+--------+--------+
+## |    횡단중                  |29%  (415)|20%  (284)|
+## +----------------------------+--------+--------+
+## |    후진중충돌              | 0%  (  1)| 0%  (  2)|
+## +----------------------------+--------+--------+
+## |도로형태 : 고가도로위       | 1%  ( 12)| 0%  (  2)|
+## +----------------------------+--------+--------+
+## |    교량위                  | 2%  ( 23)| 1%  ( 19)|
+## +----------------------------+--------+--------+
+## |    교차로내                |16%  (231)|22%  (306)|
+## +----------------------------+--------+--------+
+## |    교차로부근              |11%  (163)|10%  (138)|
+## +----------------------------+--------+--------+
+## |    교차로횡단보도내        | 5%  ( 70)| 4%  ( 58)|
+## +----------------------------+--------+--------+
+## |    기타                    | 2%  ( 31)| 3%  ( 41)|
+## +----------------------------+--------+--------+
+## |    기타단일로              |62%  (886)|59%  (827)|
+## +----------------------------+--------+--------+
+## |    불명                    | 0%  (  2)| 0%  (  3)|
+## +----------------------------+--------+--------+
+## |    주차장                  | 0%  (  4)| 0%  (  1)|
+## +----------------------------+--------+--------+
+## |    지하차도(도로)내        | 0%  (  4)| 0%  (  2)|
+## +----------------------------+--------+--------+
+## |    터널안                  | 1%  (  8)| 1%  (  9)|
+## +----------------------------+--------+--------+
+\end{verbatim}
+
+\subsubsection{featureplot를 이용한 데이터 시각화}\label{featureplot---}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Data_complete<-x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train[}\KeywordTok{complete.cases}\NormalTok{(x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train),]}
+\KeywordTok{featurePlot}\NormalTok{(}
+\NormalTok{  Data_complete[,}
+                \KeywordTok{sapply}\NormalTok{(}\KeywordTok{names}\NormalTok{(Data_complete),}
+                       \ControlFlowTok{function}\NormalTok{(n)\{}\KeywordTok{is.numeric}\NormalTok{(Data_complete[,n])\})],}
+\NormalTok{  Data_complete[,}\KeywordTok{c}\NormalTok{(}\StringTok{'주야'}\NormalTok{)],}
+  \StringTok{"ellipse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <82>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ac>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <a7>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <90>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�щ쭩�먯닔' in 'mbcsToSbcs': dot substituted
+## for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <82>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ac>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <81>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <90>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�ъ긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <a4>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <91>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <81>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <90>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '以묒긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <b2>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <81>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <90>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎌긽�먯닔' in 'mbcsToSbcs': dot substituted
+## for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <b6>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <81>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <8b>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <a0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <b3>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <a0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <90>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x
+## $x, x$y, : conversion failure on '遺�곸떊怨좎옄��' in 'mbcsToSbcs': dot
+## substituted for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <b9>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂X_UTMK' in 'mbcsToSbcs': dot
+## substituted for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <83>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <b9>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '諛쒖깮�꾩튂Y_UTMK' in 'mbcsToSbcs': dot
+## substituted for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <b2>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <bd>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <8f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '寃쎈룄' in 'mbcsToSbcs': dot substituted for
+## <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <8f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
+## $y, : conversion failure on '�꾨룄' in 'mbcsToSbcs': dot substituted for
+## <84>
+\end{verbatim}
+
+\includegraphics{FinalProject_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\subsubsection{mosaicplot를 이용한 데이터 시각화}\label{mosaicplot---}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mosaicplot}\NormalTok{(주야}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train,}\DataTypeTok{color=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{main=}\StringTok{'요일 and 사고유형'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <9a>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <94>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <82>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ac>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <b3>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <a0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <9c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <a0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <ed>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪 and �ш퀬�좏삎' in 'mbcsToSbcs': dot substituted for <95>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <a3>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <95>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '二쇱빞' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <9a>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <94>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(main, sub = sub, xlab = xlab, ylab = ylab): conversion
+## failure on '�붿씪' in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <95>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '�쇨컙' in 'mbcsToSbcs': dot substituted for
+## <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+c57c에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+ac04에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <a3>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '二쇨컙' in 'mbcsToSbcs': dot substituted
+## for <84>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+c8fc에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+ac04에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '湲�' in 'mbcsToSbcs': dot substituted
+## for <ea>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '湲�' in 'mbcsToSbcs': dot substituted
+## for <b8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '湲�' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+ae08에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '紐�' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '紐�' in 'mbcsToSbcs': dot substituted
+## for <aa>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '紐�' in 'mbcsToSbcs': dot substituted
+## for <a9>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+baa9에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <88>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <98>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+c218에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <9b>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <94>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+c6d4에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <9d>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <bc>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+c77c에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <ed>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <86>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <a0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+d1a0에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <ed>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <99>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : conversion failure on '��' in 'mbcsToSbcs': dot substituted
+## for <94>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = 35 * cex.axis/0.66 - 20 * cex.axis/0.66 *
+## (lablevy - : 유니코드 문자 U+d654에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <82>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ac>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b300에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+c0ac에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b78c에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b300에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <9f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <89>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <8b>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <8f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <85>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b7c9에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b2e8에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b3c5에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <82>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <ac>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <9e>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤��щ엺' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b300에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+c0ac에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b78c에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <8c>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <80>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤�李�' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b300에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <ec>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <b0>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <9f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <89>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <8b>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <a8>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <eb>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <8f>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : conversion failure on '李⑤웾�⑤룆' in 'mbcsToSbcs': dot substituted
+## for <85>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+cc28에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b7c9에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b2e8에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in text.default(x = x.l + (x.r - x.l)/2, y = 1000 - 35 * cex.axis/
+## 0.66 + : 유니코드 문자 U+b3c5에 대한 폰트메트릭을 알 수 없습니다
+\end{verbatim}
+
+\includegraphics{FinalProject_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsubsection{xtabs를 이용한 사망자수}\label{xtabs--}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     사고유형_대분류
+## 요일 차대사람 차대차 차량단독
+##   금      174    160       88
+##   목      164    167       87
+##   수      152    169       62
+##   월      168    168       83
+##   일      126    118       96
+##   토      166    148       92
+##   화      180    193       79
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xtabs}\NormalTok{(주야}\OperatorTok{==}\StringTok{"야간"}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}\OperatorTok{/}\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     사고유형_대분류
+## 요일  차대사람    차대차  차량단독
+##   금 0.5747126 0.5062500 0.4090909
+##   목 0.5792683 0.4550898 0.5517241
+##   수 0.6052632 0.3846154 0.5322581
+##   월 0.4940476 0.4047619 0.4216867
+##   일 0.6349206 0.5169492 0.5625000
+##   토 0.6927711 0.3918919 0.4782609
+##   화 0.5611111 0.3834197 0.4430380
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xtabs}\NormalTok{(주야}\OperatorTok{==}\StringTok{"주간"}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}\OperatorTok{/}\KeywordTok{xtabs}\NormalTok{(}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{사고유형_대분류,}\DataTypeTok{data=}\NormalTok{x}\OperatorTok{$}\NormalTok{Fold1}\OperatorTok{$}\NormalTok{train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     사고유형_대분류
+## 요일  차대사람    차대차  차량단독
+##   금 0.4252874 0.4937500 0.5909091
+##   목 0.4207317 0.5449102 0.4482759
+##   수 0.3947368 0.6153846 0.4677419
+##   월 0.5059524 0.5952381 0.5783133
+##   일 0.3650794 0.4830508 0.4375000
+##   토 0.3072289 0.6081081 0.5217391
+##   화 0.4388889 0.6165803 0.5569620
+\end{verbatim}
+
+\subsubsection{평가 메트릭}\label{-}
+
+\subparagraph{rpart 모델}\label{rpart-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rpart)}
+\NormalTok{m<-}\KeywordTok{rpart}\NormalTok{(주야}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{발생지시도}\OperatorTok{+}\NormalTok{사고유형_대분류}\OperatorTok{+}\NormalTok{사고유형_중분류}\OperatorTok{+}\NormalTok{도로형태,}\DataTypeTok{data=}\NormalTok{train_Data)}
+\NormalTok{p<-}\KeywordTok{predict}\NormalTok{(m,}\DataTypeTok{newdata=}\NormalTok{train_Data,}\DataTypeTok{type=}\StringTok{'class'}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    2    3    4    6    7    8 
+## 야간 야간 야간 야간 야간 주간 
+## Levels: 야간 주간
+\end{verbatim}
+
+\subsubsection{foreach 사용하여 분석}\label{foreach--}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(foreach) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'foreach' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{folds<-}\KeywordTok{create_ten_fold_cv}\NormalTok{()}
+\NormalTok{rpart_result<-}\KeywordTok{foreach}\NormalTok{(}\DataTypeTok{f=}\NormalTok{folds) }\OperatorTok{%do%}\StringTok{ }\NormalTok{\{}
+\NormalTok{  model_rpart<-}\KeywordTok{rpart}\NormalTok{(}
+\NormalTok{    주야}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{발생지시도}\OperatorTok{+}\NormalTok{사고유형_대분류}\OperatorTok{+}\NormalTok{사고유형_중분류}\OperatorTok{+}\NormalTok{도로형태, }\DataTypeTok{data=}\NormalTok{f}\OperatorTok{$}\NormalTok{train)}
+\NormalTok{  predicted<-}\KeywordTok{predict}\NormalTok{(model_rpart, }\DataTypeTok{newdata=}\NormalTok{f}\OperatorTok{$}\NormalTok{validation,}
+                     \DataTypeTok{type=}\StringTok{"class"}\NormalTok{)}
+  \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\DataTypeTok{actual=}\NormalTok{f}\OperatorTok{$}\NormalTok{validation}\OperatorTok{$}\NormalTok{주야,}\DataTypeTok{predicted=}\NormalTok{predicted))}
+\NormalTok{\}}
+\KeywordTok{head}\NormalTok{(rpart_result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [[1]]$actual
+## [1] 야간 주간 주간 주간
+## Levels: 야간 주간
+## 
+## [[1]]$predicted
+##   10   17   20   21 
+## 야간 주간 야간 주간 
+## Levels: 야간 주간
+## 
+## 
+## [[2]]
+## [[2]]$actual
+## [1] 주간
+## Levels: 야간 주간
+## 
+## [[2]]$predicted
+##   14 
+## 야간 
+## Levels: 야간 주간
+## 
+## 
+## [[3]]
+## [[3]]$actual
+## [1] 야간 주간
+## Levels: 야간 주간
+## 
+## [[3]]$predicted
+##    9   22 
+## 주간 야간 
+## Levels: 야간 주간
+## 
+## 
+## [[4]]
+## [[4]]$actual
+## [1] 주간
+## Levels: 야간 주간
+## 
+## [[4]]$predicted
+##   18 
+## 주간 
+## Levels: 야간 주간
+## 
+## 
+## [[5]]
+## [[5]]$actual
+## [1] 야간 야간 주간
+## Levels: 야간 주간
+## 
+## [[5]]$predicted
+##   11   12   24 
+## 주간 야간 야간 
+## Levels: 야간 주간
+## 
+## 
+## [[6]]
+## [[6]]$actual
+## [1] 야간 주간 주간
+## Levels: 야간 주간
+## 
+## [[6]]$predicted
+##    6    8   25 
+## 야간 주간 야간 
+## Levels: 야간 주간
+\end{verbatim}
+
+\subsubsection{Accuracy 평가}\label{accuracy-}
+
+\subparagraph{evaluation함수 생성}\label{evaluation-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evaluation<-}\ControlFlowTok{function}\NormalTok{(lst)\{}
+\NormalTok{  accuracy<-}\KeywordTok{sapply}\NormalTok{(lst,}\ControlFlowTok{function}\NormalTok{(one_result)\{ }\CommentTok{#벡터로 묶음}
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{sum}\NormalTok{(one_result}\OperatorTok{$}\NormalTok{predicted}\OperatorTok{==}\NormalTok{one_result}\OperatorTok{$}\NormalTok{actual)}
+           \OperatorTok{/}\KeywordTok{NROW}\NormalTok{(one_result}\OperatorTok{$}\NormalTok{actual))}
+\NormalTok{  \})}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{sprintf}\NormalTok{(}\StringTok{"MEAN +/- SD: %.3f +/- %.3f"}\NormalTok{,}
+                \KeywordTok{mean}\NormalTok{(accuracy),}\KeywordTok{sd}\NormalTok{(accuracy))) }\CommentTok{#평균, 표준편차}
+  \KeywordTok{return}\NormalTok{(accuracy)}
+\NormalTok{\}}
+\NormalTok{rpart_accuracy<-}\KeywordTok{evaluation}\NormalTok{(rpart_result) }\CommentTok{#Accuracy 계산결과 rpart 모델성능 판단}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "MEAN +/- SD: 0.562 +/- 0.405"
+\end{verbatim}
+
+\subsubsection{ctree()를 사용한 교차 검증}\label{ctree---}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(party)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'party' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: grid
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: mvtnorm
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: modeltools
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: stats4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: strucchange
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'strucchange' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: zoo
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'zoo' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: sandwich
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'sandwich' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ctree_result<-}\KeywordTok{foreach}\NormalTok{(}\DataTypeTok{f=}\NormalTok{folds)}\OperatorTok{%do%}\StringTok{ }\NormalTok{\{}
+\NormalTok{  model_ctree<-}\KeywordTok{ctree}\NormalTok{(}
+\NormalTok{    주야}\OperatorTok{~}\NormalTok{요일}\OperatorTok{+}\NormalTok{발생지시도}\OperatorTok{+}\NormalTok{사고유형_대분류}\OperatorTok{+}\NormalTok{사고유형_중분류}\OperatorTok{+}\NormalTok{도로형태,}\DataTypeTok{data=}\NormalTok{f}\OperatorTok{$}\NormalTok{train)}
+\NormalTok{  predicted<-}\KeywordTok{predict}\NormalTok{(model_ctree,}\DataTypeTok{newdata=}\NormalTok{f}\OperatorTok{$}\NormalTok{validation,}
+                     \DataTypeTok{type=}\StringTok{'response'}\NormalTok{)}
+  \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(}\DataTypeTok{actual=}\NormalTok{f}\OperatorTok{$}\NormalTok{validation}\OperatorTok{$}\NormalTok{주야,}\DataTypeTok{predicted=}\NormalTok{predicted))}
+\NormalTok{\}}
+\NormalTok{(ctree_accuracy<-}\KeywordTok{evaluation}\NormalTok{(ctree_result))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "MEAN +/- SD: 0.625 +/- 0.339"
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 0.7500000 0.0000000 0.5000000 1.0000000 0.6666667 0.3333333 1.0000000
+## [8] 0.7500000
+\end{verbatim}
+
+\subsubsection{정확도 분포}\label{-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(rpart_accuracy),}\DataTypeTok{main=}\StringTok{'rpart VS ctree'}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(ctree_accuracy),}\DataTypeTok{col=}\StringTok{'red'}\NormalTok{,}\DataTypeTok{lty=}\StringTok{'dashed'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{FinalProject_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+
+\end{document}
