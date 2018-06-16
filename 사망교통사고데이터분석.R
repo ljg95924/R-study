@@ -1,16 +1,33 @@
 rm(list=ls())
 #데이터 불러오기
-csv_Data<-read.csv('전국_사망교통사고_2017.csv') 
+
+csv_Data<-read.csv('data//교통사고정보//2017_교통사고정보.csv') 
+csv_Data2<-read.csv('data//교통사고정보//2016_교통사고정보.csv') 
+csv_Data3<-read.csv('data//교통사고정보//2015_교통사고정보.csv') 
+csv_Data4<-read.csv('data//교통사고정보//2012_2014_교통사고정보.csv') 
+
 #불필요한 데이터 삭제
 library(dplyr)
-Data<-csv_Data%>%
+bind_Data<-bind_rows(csv_Data,csv_Data2,csv_Data3,csv_Data4)
+Data<-bind_Data%>%
   select(-발생년,-발생년월일시,-발생분,-당사자종별_1당_대분류,-당사자종별_2당_대분류,-사고유형) #중복 데이터 삭제
+#
 
 #데이터 확인
 str(Data)
 
 #데이터 타입 형식 변환
 Data$발생지시군구<-as.character(Data$발생지시군구)
+Data$발생지시도<-as.factor(Data$발생지시도)
+Data$사고유형_대분류<-as.factor(Data$사고유형_대분류)
+Data$사고유형_중분류<-as.factor(Data$사고유형_중분류)
+Data$법규위반_대분류<-as.factor(Data$법규위반_대분류)
+Data$법규위반<-as.factor(Data$법규위반)
+Data$도로형태_대분류<-as.factor(Data$도로형태_대분류)
+Data$도로형태<-as.factor(Data$도로형태)
+Data$당사자종별_1당<-as.factor(Data$당사자종별_1당)
+Data$당사자종별_2당<-as.factor(Data$당사자종별_2당)
+
 
 #Data$사망자수<-as.factor(Data$사망자수)
 #Data$사상자수<-as.factor(Data$사상자수)
@@ -38,7 +55,7 @@ prop.table(table(train_Data$주야))
 
 #교차 검증 준비
 create_ten_fold_cv<-function(){
-  set.seed(137)
+  set.seed(117)
   lapply(createFolds(train_Data,k=10),function(idx){
     return(list(train=train_Data[-idx,],
                 validation=train_Data[idx,]))
@@ -71,8 +88,8 @@ xtabs(주야=="주간"~요일+사고유형_대분류,data=x$Fold1$train)/xtabs(~
 library(rpart)
 m<-rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data)
 
-plot(rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data,method='class'))
-text(rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data,method='class'))
+#plot(rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data,method='class'))
+#text(rpart(주야~요일+발생지시도+사고유형_대분류+사고유형_중분류+도로형태,data=train_Data,method='class'))
 p<-predict(m,newdata=train_Data,type='class')
 
 plot(p)
@@ -88,7 +105,7 @@ rpart_result<-foreach(f=folds) %do% {
                      type="class")
   return(list(actual=f$validation$주야,predicted=predicted))
 }
-head(rpart_result)
+#head(rpart_result)
 #Accuracy 평가 (Accuracy 계산결과 rpart 모델성능 판단)
 evaluation<-function(lst){
   accuracy<-sapply(lst,function(one_result){ #벡터로 묶음

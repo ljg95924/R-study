@@ -9,14 +9,18 @@ output: word_document
 ##
 ###데이터 불러오기
 ```{r}
-csv_Data<-read.csv('전국_사망교통사고_2017.csv') 
-head(csv_Data)
+csv_Data<-read.csv('data//교통사고정보//2017_교통사고정보.csv') 
+csv_Data2<-read.csv('data//교통사고정보//2016_교통사고정보.csv') 
+csv_Data3<-read.csv('data//교통사고정보//2015_교통사고정보.csv') 
+csv_Data4<-read.csv('data//교통사고정보//2012_2014_교통사고정보.csv') 
+
 ```
 
 ###불필요한 데이터 삭제
 ```{r}
 library(dplyr)
-Data<-csv_Data%>%
+bind_Data<-bind_rows(csv_Data,csv_Data2,csv_Data3,csv_Data4)
+Data<-bind_Data%>%
   select(-발생년,-발생년월일시,-발생분,-당사자종별_1당_대분류,-당사자종별_2당_대분류,-사고유형) 
 ```
 ###데이터 확인
@@ -25,7 +29,15 @@ str(Data)
 ```
 ###데이터 타입 형식 변환
 ```{r}
-Data$발생지시군구<-as.character(Data$발생지시군구)
+Data$발생지시도<-as.factor(Data$발생지시도)
+Data$사고유형_대분류<-as.factor(Data$사고유형_대분류)
+Data$사고유형_중분류<-as.factor(Data$사고유형_중분류)
+Data$법규위반_대분류<-as.factor(Data$법규위반_대분류)
+Data$법규위반<-as.factor(Data$법규위반)
+Data$도로형태_대분류<-as.factor(Data$도로형태_대분류)
+Data$도로형태<-as.factor(Data$도로형태)
+Data$당사자종별_1당<-as.factor(Data$당사자종별_1당)
+Data$당사자종별_2당<-as.factor(Data$당사자종별_2당)
 ```
 ###교차검증 준비
 ######(createDataPartition()사용)하기 위해 caret 라이브러리 사용
@@ -45,7 +57,7 @@ prop.table(table(train_Data$주야))
 ###교차검증 함수 생성
 ```{r}
 create_ten_fold_cv<-function(){
-  set.seed(137)
+  set.seed(117)
   lapply(createFolds(train_Data,k=10),function(idx){
     return(list(train=train_Data[-idx,],
                 validation=train_Data[idx,]))
